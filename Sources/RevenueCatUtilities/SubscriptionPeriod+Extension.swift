@@ -2,7 +2,7 @@ import Foundation
 import RevenueCat
 
 extension SubscriptionPeriod {
-    var periodTitle: String {
+    public var periodTitle: String {
         switch (unit, value) {
         case (.day, 1):
             NSLocalizedString("onePeriodDay", comment: "One day period")
@@ -23,7 +23,7 @@ extension SubscriptionPeriod {
         }
     }
 
-    var subscriptionPeriodTitle: String {
+    public var subscriptionPeriodTitle: String {
         switch (unit, value) {
         case (.day, 1):
             NSLocalizedString("periodDay", comment: "Day period")

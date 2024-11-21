@@ -2,7 +2,7 @@ import Foundation
 import RevenueCat
 
 extension Package {
-    var localizedActionTitle: String {
+    public var localizedActionTitle: String {
         if let introDiscount = storeProduct.introductoryDiscount, introDiscount.price == 0 {
             NSLocalizedString("startFreeTrial", comment: "Start free trial button text with period")
         } else {
@@ -10,7 +10,7 @@ extension Package {
         }
     }
 
-    var localizedPriceDescription: String? {
+    public var localizedPriceDescription: String? {
         if let introDiscount = storeProduct.introductoryDiscount, let subscriptionPeriod = storeProduct.subscriptionPeriod {
             switch introDiscount.price {
             case 0:
@@ -34,7 +34,7 @@ extension Package {
         return nil
     }
 
-    var pricePerDay: Double {
+    public var pricePerDay: Double {
         let price = Double(truncating: storeProduct.price as NSDecimalNumber)
 
         guard let period = storeProduct.subscriptionPeriod else {

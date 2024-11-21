@@ -1,10 +1,10 @@
 import Foundation
 
-enum PurchaseError: Error, LocalizedError, Equatable {
+public enum PurchaseError: Error, LocalizedError, Equatable {
     case failedToRestore
     case noActiveEntitlement
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .failedToRestore:
             NSLocalizedString("failedToRestoreError", comment: "Failed to restore purchases error")
@@ -13,7 +13,7 @@ enum PurchaseError: Error, LocalizedError, Equatable {
         }
     }
 
-    var failureReason: String? {
+    public var failureReason: String? {
         switch self {
         case .failedToRestore:
             NSLocalizedString("failedToRestoreReason", comment: "Failed to restore purchases reason")
@@ -22,7 +22,7 @@ enum PurchaseError: Error, LocalizedError, Equatable {
         }
     }
 
-    var recoverySuggestion: String? {
+    public var recoverySuggestion: String? {
         switch self {
         case .failedToRestore:
             NSLocalizedString("failedToRestoreSuggestion", comment: "Failed to restore purchases suggestion")
