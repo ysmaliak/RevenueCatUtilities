@@ -15,20 +15,20 @@ let package = Package(
         .library(
             name: "RevenueCatUtilities",
             targets: ["RevenueCatUtilities"]
-        ),
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/RevenueCat/purchases-ios.git", from: "5.9.0"),
+        .package(url: "https://github.com/RevenueCat/purchases-ios.git", from: "5.9.0")
     ],
     targets: [
         .target(
             name: "RevenueCatUtilities",
             dependencies: [
-                .product(name: "RevenueCat", package: "purchases-ios"),
+                .product(name: "RevenueCat", package: "purchases-ios")
             ],
             resources: [
-                .process("Resources"),
+                .process("Resources")
             ]
-        ),
+        )
     ]
 )
