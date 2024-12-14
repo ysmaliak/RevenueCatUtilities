@@ -4,9 +4,9 @@ import RevenueCat
 extension Package {
     public var localizedActionTitle: String {
         if let introDiscount = storeProduct.introductoryDiscount, introDiscount.price == 0 {
-            NSLocalizedString("startFreeTrial", comment: "Start free trial button text with period")
+            String(localized: "startFreeTrial", comment: "Start free trial button text with period")
         } else {
-            NSLocalizedString("subscribe", comment: "Subscribe button text")
+            String(localized: "subscribe", comment: "Subscribe button text")
         }
     }
 
@@ -15,14 +15,14 @@ extension Package {
             switch introDiscount.price {
             case 0:
                 return String(
-                    format: NSLocalizedString("freeTrialThenPrice", comment: "Free trial then price description"),
+                    format: String(localized: "freeTrialThenPrice", comment: "Free trial then price description"),
                     introDiscount.subscriptionPeriod.periodTitle,
                     "\(storeProduct.localizedPriceString)/\(subscriptionPeriod.subscriptionPeriodTitle)"
                 )
 
             default:
                 return String(
-                    format: NSLocalizedString("priceForPeriod", comment: "Price for period description"),
+                    format: String(localized: "priceForPeriod", comment: "Price for period description"),
                     introDiscount.localizedPriceString,
                     introDiscount.subscriptionPeriod.periodTitle
                 )
