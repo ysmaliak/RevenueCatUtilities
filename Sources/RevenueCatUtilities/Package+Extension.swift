@@ -4,7 +4,10 @@ import RevenueCat
 extension Package {
     public var localizedActionTitle: String {
         if let introDiscount = storeProduct.introductoryDiscount, introDiscount.price == 0 {
-            String(localized: "startFreeTrial", bundle: .module, comment: "Start free trial button text with period")
+            String(
+                format: String(localized: "startFreeTrial", bundle: .module, comment: "Start free trial button text with period"),
+                introDiscount.subscriptionPeriod.periodTitle
+            )
         } else {
             String(localized: "subscribe", bundle: .module, comment: "Subscribe button text")
         }
