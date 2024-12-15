@@ -4,9 +4,9 @@ import RevenueCat
 extension Package {
     public var localizedActionTitle: String {
         if let introDiscount = storeProduct.introductoryDiscount, introDiscount.price == 0 {
-            String(localized: "startFreeTrial", comment: "Start free trial button text with period")
+            String(localized: "startFreeTrial", bundle: .module, comment: "Start free trial button text with period")
         } else {
-            String(localized: "subscribe", comment: "Subscribe button text")
+            String(localized: "subscribe", bundle: .module, comment: "Subscribe button text")
         }
     }
 
@@ -15,14 +15,14 @@ extension Package {
             switch introDiscount.price {
             case 0:
                 return String(
-                    format: String(localized: "freeTrialThenPrice", comment: "Free trial then price description"),
+                    format: String(localized: "freeTrialThenPrice", bundle: .module, comment: "Free trial then price description"),
                     introDiscount.subscriptionPeriod.periodTitle,
                     "\(storeProduct.localizedPriceString)/\(subscriptionPeriod.subscriptionPeriodTitle)"
                 )
 
             default:
                 return String(
-                    format: String(localized: "priceForPeriod", comment: "Price for period description"),
+                    format: String(localized: "priceForPeriod", bundle: .module, comment: "Price for period description"),
                     introDiscount.localizedPriceString,
                     introDiscount.subscriptionPeriod.periodTitle
                 )
