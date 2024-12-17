@@ -8,8 +8,10 @@ extension Package {
                 format: String(localized: "startFreeTrial", bundle: .module, comment: "Start free trial button text with period"),
                 introDiscount.subscriptionPeriod.periodTitle
             )
-        } else {
+        } else if storeProduct.subscriptionPeriod != nil {
             String(localized: "subscribe", bundle: .module, comment: "Subscribe button text")
+        } else {
+            String(localized: "purchase", bundle: .module, comment: "Purchase button text")
         }
     }
 
@@ -32,16 +34,19 @@ extension Package {
             }
         } else if let subscriptionPeriod = storeProduct.subscriptionPeriod {
             return "\(storeProduct.localizedPriceString)/\(subscriptionPeriod.subscriptionPeriodTitle)"
+        } else {
+            return String(
+                format: String(localized: "oneTimePurchase", bundle: .module, comment: "One time purchase price description"),
+                storeProduct.localizedPriceString
+            )
         }
-
-        return nil
     }
 
-    public var pricePerDay: Double {
+    public var pricePerDay: Double? {
         let price = Double(truncating: storeProduct.price as NSDecimalNumber)
 
         guard let period = storeProduct.subscriptionPeriod else {
-            return price
+            return nil
         }
 
         let daysInPeriod = switch period.unit {
